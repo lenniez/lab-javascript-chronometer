@@ -7,12 +7,12 @@ function Chronometer() {
 Chronometer.prototype.startClick = function () {
   var self = this; //Important! Create an alias here for this because once you have a function inside a function, the this will change. So if you set self = this within the constructor and prototype
   
-  self.intervalId = setInterval(increment, 1000); 
-  
   function increment() {
+    console.log(self.currentTime);
     self.currentTime += 1;
-    self.setTime();
+    self.setTime();   
   }
+  self.intervalId = setInterval(increment, 1000); 
 }; 
 
 Chronometer.prototype.setMinutes = function () {
@@ -35,10 +35,11 @@ Chronometer.prototype.twoDigitsNumber = function (time) {
 
 
 Chronometer.prototype.setTime = function () {
-  var minutes = this.twoDigitsNumber(this.setMinutes);
-  var seconds = this.twoDigitsNumber(this.setSeconds);
-  var setTime = minutes + ": " + seconds;
-  return setTime;
+  var minutes = this.twoDigitsNumber(this.setMinutes());
+  var seconds = this.twoDigitsNumber(this.setSeconds());
+  var actualTime = minutes + ": " + seconds;
+  console.log (actualTime);
+  return actualTime;
 };
 
 //Chronometer.prototype.setMilliseconds = function () {
@@ -51,6 +52,7 @@ Chronometer.prototype.stopClick = function () {
 
 Chronometer.prototype.resetClick = function () {
   this.currentTime = 0;
+  console.log(this.currentTime)
 };
 
 // Chronometer.prototype.splitClick = function () {

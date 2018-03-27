@@ -7,26 +7,29 @@ var secDec      = document.getElementById('secDec');
 var secUni      = document.getElementById('secUni');
 var milDec      = document.getElementById('milDec');
 var milUni      = document.getElementById('milUni');
-var timeToPrint     = chronometer.setTime();
+var intervalId;
 
-/* NOT WORKING ----- GRRRR --------
+intervalId = setInterval(function(event) {
+  printTime();
+}, 1000);
 
 function printTime() {
-  minDec = this.timeToPrint[0];
-  minUni = this.timeToPrint[1];
-  secDec = this.timeToPrint[5];
-  secUni = this.timeToPrint[6];
+    minDec.innerText = chronometer.setTime()[0];
+    minUni.innerText = chronometer.setTime()[1];
+    secDec.innerText = chronometer.setTime()[4];
+    secUni.innerText = chronometer.setTime()[5];
 }
 
-*/
+//chronometer.startClick();
+//chronometer.setTime();
+//printTime();
 
-function printMinutes() {
 
-}
 
-function printSeconds() {
 
-}
+
+
+
 
 function printMilliseconds() {
 
@@ -80,6 +83,7 @@ btnRight.addEventListener('click', function () {
   
   if (document.getElementById("btnRight").classList.contains("reset")) {
     document.getElementById("btnRight").classList.replace("reset", "split");
+    chronometer.resetClick();
   } else {
     document.getElementById("btnRight").classList = "btn reset";
   }
